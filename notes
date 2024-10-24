@@ -1,0 +1,8 @@
+create venv in the one folder beyond current dir
+insyall:
+pip install django psycopg2-binary
+pip install djangorestframework
+
+
+for migrate try this :
+docker compose exec web python manage.py migrate

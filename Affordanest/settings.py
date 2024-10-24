@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
     'user_service',
     'host_service',
     'guest_service',
@@ -72,13 +74,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Affordanest.wsgi.application'
 
+AUTH_USER_MODEL = 'user_service.CustomUser'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hotel_db',
+        'NAME': 'postgres',
         'USER': 'user',
         'PASSWORD': 'password',
         'HOST': 'db',
